@@ -80,11 +80,7 @@ public int getMileage() {
 
 public String getVin() {
 	return vin;
-}
-
-
-
-	
+}	
 	
 
   public String fullInfo() { 
@@ -106,18 +102,18 @@ public String toString() {
 public String toString(boolean extra) {
 	
 return String.format( "|%-18s|%-12s|%-20s|%-8d|%-13s|%-18s|%-5d", getVin(), getMake(), getModel(), getYear(), getColour(), getGearbox(), getMileage()) + 
-		(extra ? ("\n↪↪" +extrasList()) : (""));
+		(extra ? ("\n↪↪" +fullInfo()) : (""));
 }
 
-private String extrasList() {
-	if (this instanceof Estate) {
-		return fullInfo();
-//		}
-//	if (this instanceof Motorbike) {
-//		return Motorbike.extraInfo();
-	}else
-	return "";	
-}
+//private String extrasList() {
+//	if (this instanceof Estate) {
+//		return fullInfo();
+////		}
+////	if (this instanceof Motorbike) {
+////		return Motorbike.extraInfo();
+//	}else
+//	return "";	
+//}
 
 
 @Override

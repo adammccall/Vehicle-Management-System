@@ -41,14 +41,15 @@ public class MainClass implements Finalisable {
         	vehicleList  = retrievedVehicleDatabase;
         }
         
+    
         // Menu options
         MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
         MenuItem d = new MenuItem("D", "Display all Vehicles", appObject, "display");
         MenuItem e = new MenuItem("E", "Edit a vehicle's details", appObject, "edit");
-        MenuItem m = new MenuItem("M", "Marry two persons", appObject, "marry");
+        MenuItem s = new MenuItem("S", "Search for a vehicle to display ", appObject, "Search");
         MenuItem p = new MenuItem("P", "Procreate a new person", appObject, "procreate");
         MenuItem v = new MenuItem("V", "Divorce two persons", appObject, "divorce");
-        MenuBuilder.displayMenu(appObject, a, d,e); //, e, m, p, v
+        MenuBuilder.displayMenu(appObject, a,d,e,s); //, e, m, p, v
         
         // save to disk at shutdown
         appObject.finalise();
@@ -244,7 +245,7 @@ public class MainClass implements Finalisable {
 
  // Notice that this method is private. It is only used internally
     private static VehicleSuperclass search(String key) {
-		Collection<VehicleSuperclass> results = CollectionUtils.search(key,vehicleList);
+		Collection<VehicleSuperclass> results = CollectionUtils.search(key,vehicleList,((Car) vehicleList).getVin());
         if (results == null || results.isEmpty()) {
             return null;
         }
@@ -252,7 +253,6 @@ public class MainClass implements Finalisable {
     }
     
     public static void edit() {
-    	    	System.out.println(vehicleList.toString());
     	
         String key = Reader.readLine("Enter a search key for the vehicle you want to edit...");
         System.out.println("the key is " +key);
