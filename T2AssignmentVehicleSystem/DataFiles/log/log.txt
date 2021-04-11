@@ -162,3 +162,45 @@ java.lang.IllegalArgumentException: Invalid integer format!
 
 **********************
 
+Sun, April 11, 2021. 22:06:26
+java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class vehicles.VehicleSuperclass (java.util.ArrayList is in module java.base of loader 'bootstrap'; vehicles.VehicleSuperclass is in unnamed module of loader 'app')
+	at vehicles.MainClass.search(MainClass.java:248)
+	at vehicles.MainClass.edit(MainClass.java:260)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:52)
+
+**********************
+
+Sun, April 11, 2021. 22:07:49
+java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class vehicles.VehicleSuperclass (java.util.ArrayList is in module java.base of loader 'bootstrap'; vehicles.VehicleSuperclass is in unnamed module of loader 'app')
+	at vehicles.MainClass.search(MainClass.java:248)
+	at vehicles.MainClass.edit(MainClass.java:259)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:52)
+
+**********************
+
+Sun, April 11, 2021. 22:16:18
+java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class vehicles.VehicleSuperclass (java.util.ArrayList is in module java.base of loader 'bootstrap'; vehicles.VehicleSuperclass is in unnamed module of loader 'app')
+	at vehicles.MainClass.search(MainClass.java:248)
+	at vehicles.MainClass.edit(MainClass.java:259)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:52)
+
+**********************
+
