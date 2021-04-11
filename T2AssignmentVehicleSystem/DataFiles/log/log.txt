@@ -1,0 +1,164 @@
+Mon, April 5, 2021. 15:53:18
+java.lang.IllegalArgumentException: Invalid integer format!
+	at uod.gla.util.Reader.readInt(Reader.java:196)
+	at uod.gla.util.Reader.readEnum(Reader.java:638)
+	at vehicles.MainClass.addNew(MainClass.java:136)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:46)
+
+**********************
+
+Tue, April 6, 2021. 19:10:18
+java.lang.Error: Unresolved compilation problem: 
+	The method toString(boolean) in the type VehicleSuperclass is not applicable for the arguments (boolean, VehicleSuperclass)
+
+	at vehicles.MainClass.display(MainClass.java:199)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:48)
+
+**********************
+
+Thu, April 8, 2021. 19:33:35
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at vehicles.MainClass.display(MainClass.java:190)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:50)
+
+**********************
+
+Thu, April 8, 2021. 20:04:41
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at vehicles.MainClass.display(MainClass.java:190)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:50)
+
+**********************
+
+Fri, April 9, 2021. 10:22:49
+java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class vehicles.VehicleSuperclass (java.util.ArrayList is in module java.base of loader 'bootstrap'; vehicles.VehicleSuperclass is in unnamed module of loader 'app')
+	at vehicles.MainClass.search(MainClass.java:246)
+	at vehicles.MainClass.edit(MainClass.java:257)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:50)
+
+**********************
+
+Fri, April 9, 2021. 10:54:30
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at vehicles.MainClass.edit(MainClass.java:267)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:51)
+
+**********************
+
+Fri, April 9, 2021. 11:14:42
+java.lang.IllegalArgumentException: Invalid integer format!
+	at uod.gla.util.Reader.readInt(Reader.java:196)
+	at uod.gla.util.Reader.readObject(Reader.java:702)
+	at vehicles.MainClass.search(MainClass.java:252)
+	at vehicles.MainClass.edit(MainClass.java:260)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:51)
+
+**********************
+
+Fri, April 9, 2021. 11:48:00
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at vehicles.MainClass.edit(MainClass.java:267)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:51)
+
+**********************
+
+Fri, April 9, 2021. 12:08:00
+java.lang.IllegalArgumentException: Invalid integer format!
+	at uod.gla.util.Reader.readInt(Reader.java:196)
+	at uod.gla.util.Reader.readObject(Reader.java:702)
+	at vehicles.MainClass.search(MainClass.java:252)
+	at vehicles.MainClass.edit(MainClass.java:260)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:51)
+
+**********************
+
+Fri, April 9, 2021. 12:08:33
+java.lang.IllegalArgumentException: Invalid integer format!
+	at uod.gla.util.Reader.readInt(Reader.java:196)
+	at uod.gla.util.Reader.readObject(Reader.java:702)
+	at vehicles.MainClass.search(MainClass.java:252)
+	at vehicles.MainClass.edit(MainClass.java:260)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:51)
+
+**********************
+
+Fri, April 9, 2021. 12:37:00
+java.lang.IllegalArgumentException: Invalid integer format!
+	at uod.gla.util.Reader.readInt(Reader.java:196)
+	at uod.gla.util.Reader.readObject(Reader.java:702)
+	at vehicles.MainClass.search(MainClass.java:252)
+	at vehicles.MainClass.edit(MainClass.java:260)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:51)
+
+**********************
+
