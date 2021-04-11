@@ -246,7 +246,6 @@ public class MainClass implements Finalisable {
     private static VehicleSuperclass search(String key) {
 		Collection<VehicleSuperclass> results = CollectionUtils.search(key,vehicleList);
         if (results == null || results.isEmpty()) {
-        	System.out.println("NOTHING!!");
             return null;
         }
         return Reader.readObject("Please select a Vehicle from the list", results);
