@@ -218,3 +218,73 @@ java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class 
 
 **********************
 
+Mon, April 12, 2021. 16:06:26
+java.lang.Error: Unresolved compilation problems: 
+	The left-hand side of an assignment must be a variable
+	Syntax error, insert "AssignmentOperator Expression" to complete Expression
+	The left-hand side of an assignment must be a variable
+	Syntax error, insert "AssignmentOperator Expression" to complete Expression
+	Syntax error on token "}", assert expected after this token
+	The operator + is undefined for the argument type(s) String
+
+	at vehicles.Car.extrasList(Car.java:78)
+	at vehicles.Estate.extrasList(Estate.java:33)
+	at vehicles.VehicleSuperclass.toString(VehicleSuperclass.java:151)
+	at vehicles.MainClass.display(MainClass.java:212)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:55)
+
+**********************
+
+Mon, April 12, 2021. 17:07:51
+java.lang.Error: Unresolved compilation problem: 
+	This method must return a result of type String
+
+	at vehicles.Car.extrasList(Car.java:74)
+	at vehicles.Estate.extrasList(Estate.java:33)
+	at vehicles.VehicleSuperclass.toString(VehicleSuperclass.java:151)
+	at vehicles.MainClass.display(MainClass.java:212)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:55)
+
+**********************
+
+Mon, April 12, 2021. 17:42:56
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at uod.gla.util.Reader.readEnum(Reader.java:641)
+	at vehicles.MainClass.addNew(MainClass.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:55)
+
+**********************
+
+Mon, April 12, 2021. 18:48:00
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at vehicles.MainClass.display(MainClass.java:199)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:55)
+
+**********************
+
