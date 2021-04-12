@@ -150,43 +150,7 @@ private static Scanner keyboard = new Scanner(System.in);
 		  ); answer = keyboard.next(); } return answer; }
 		 
 		
-		  public static <e> String verifyVin(List<VehicleSuperclass> list) {
-			 String answer = Reader.readLine("Please enter the VIN:", 11, 14);
-		String upperAnswer = answer.toUpperCase();
-
-		for (VehicleSuperclass e : list) {
-			if (e.getVin().equals(upperAnswer)) {
-				System.out.println("There is a match in the System, it is a " +e.vehicleName() +"\nTry Again."); 
-				answer = Reader.readLine("Please enter the VIN:", 11, 14);
-				upperAnswer = answer.toUpperCase();
-
-				for (VehicleSuperclass f : list) { 
-					if (f.getVin().equals(upperAnswer)) { 
-						System.out.println("There is a match in the System, it is a " +f.vehicleName());
-						answer = Reader.readLine("Please enter the VIN:", 11, 14);
-						upperAnswer = answer.toUpperCase();
-					} 
-				}
-				for (VehicleSuperclass g : list) { 
-					if (g.getVin().equals(upperAnswer)) { 
-						System.out.println("There is a match in the System, it is a " +g.vehicleName()
-						+"\nToo many attempts. Exiting Program"); 
-						System.exit(0);
-					} 
-				}
-
-			}
-
-
-		}
-			 return upperAnswer;
-			  
-			  
-			  
-			  
-			  
-			  
-		  }
+		  
 
 }
 

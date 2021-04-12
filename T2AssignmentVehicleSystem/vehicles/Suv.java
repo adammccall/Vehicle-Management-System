@@ -27,11 +27,13 @@ public class Suv extends Car {
 			}
 	}
 
-@Override
-	public String fullInfo() {		
-	 super.fullInfo();
-	 return ("Has all wheel drive") +this.hasAllWheelDrive();
-		}
+@Override	
+	public String extrasList() {	
+		return super.extrasList() +
+		(this.allWheelDrive ? ("[✅ All wheel drive fitted] ") : ("[❎ No all wheel drive] "));
+		
+		
+	}
 	
 }
 

@@ -9,9 +9,6 @@ public class HatchBack extends Car {
 					parkingSensors, towBar, roofRack);	
 	}
 	
-	@Override
-	public void fullInfo() {		
-		System.out.println("\nThe type of vehicle is a Hatchback.");
-		super.fullInfo();}
+
 		
 }

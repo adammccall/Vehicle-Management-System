@@ -33,7 +33,6 @@ public class MainClass implements Finalisable {
 
 		// Welcome message
 		System.out.println("Welcome to Chi's Car Showroom");
-
 		MenuBuilder.setDefaultPrompt("Choose an option from the list...");
 
 		// retrieve data from disk at start up
@@ -151,7 +150,7 @@ public class MainClass implements Finalisable {
 
 
 
-		vin = UserInput.verifyVin(vehicleList);
+		vin = VehicleSuperclass.setVin(vehicleList);
 
 
 		//Switch to assign the variables to the selected vehicle type.
@@ -204,12 +203,12 @@ public class MainClass implements Finalisable {
 
 			if (sortBy == sortOptions.NORMAL) {
 				System.out.println("<<<---------------------------------<<<Standard Sort (Make, Model, Year)>>>---------------------------------->>>");
-				System.out.println(String.format( "%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "element", "Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
+				System.out.println(String.format( "%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "id", "Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
 				System.out.println("----------------------------------------------------------------------------------------------------------------");
 
 				Collections.sort(vehicleList);
 				for (VehicleSuperclass i : vehicleList) { 
-					System.out.print(String.format("%-9d", vehicleList.indexOf(i)));
+					System.out.print(String.format("%-9d", vehicleList.indexOf(i)+1));
 					System.out.println(i.toString(extraInfo));
 				}}
 
@@ -230,11 +229,11 @@ public class MainClass implements Finalisable {
 
 				};
 
-				System.out.println(String.format( "%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "element", "Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
+				System.out.println(String.format( "%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "ID", "Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
 				System.out.println("----------------------------------------------------------------------------------------------------------------");
 				Collections.sort(vehicleList,sortByYear);
 				for (VehicleSuperclass i : vehicleList) { 
-					System.out.print(String.format("%-9d", vehicleList.indexOf(i)));
+					System.out.print(String.format("%-9d", vehicleList.indexOf(i)+1));
 					System.out.println(i.toString(extraInfo));
 
 
@@ -270,9 +269,9 @@ public class MainClass implements Finalisable {
 			return;
 		}
 
-		System.out.println(vehicle);
-		boolean edited = false;
 
+		boolean edited = false;
+		
 		if (vehicle instanceof Car) {
 			if (((Car) vehicle).hasTowBar()) {
 
@@ -352,23 +351,18 @@ if (((Estate) vehicle).hasThirdRowSeat()) {
 			         		}
 			         		
 			         	} else {
-			         		if (Reader.readBoolean("Do you want to add all wheel drive?")) 
+			         		if (Reader.readBoolean("Do you want to add a luggage box?")) 
 			            ((Motorbike) vehicle).addLuggageBox();
 			             edited = true;
 			         }
 			 		}
-		 if (Reader.readBoolean("Do you want to change the colour of the " +vehicle.getModel()+"?")) {
-			 System.out.println("The current colour is " +vehicle.getColour());
-			 Colours newColour = Reader.readEnum("What colour is the vehicle now?", Colours.class);
-			 if (vehicle.getColour() == newColour) {
-				System.out.println("This colour is the same as the previous one!");
-			 } else
-			 vehicle.setColour(newColour);
+		 if (Reader.readBoolean("Do you want to change the colour of the " +vehicle.fullName()+"?")) {
+			 vehicle.setColour();
 			 edited = true;
 		
 		 }
 		 
-		 if (Reader.readBoolean("Do you want to change the mileage of the " +vehicle.getModel()+"?")) {
+		 if (Reader.readBoolean("Do you want to change the mileage of the " +vehicle.fullName()+"?")) {
 			 
 			 vehicle.setMileage();
 			 edited = true;

@@ -38,19 +38,13 @@ public class Motorbike extends VehicleSuperclass {
 	
 
 	@Override
-	public void fullInfo() {		
-		System.out.println("\nThe type of vehicle is a Motorbike.");
-		super.fullInfo();
-		if (luggageBox) {
-			System.out.println("There is a luggage box attached to this " +getModel() +".");
-		} else {
-			System.out.println("There is no luggage box attached to this " +getModel() +".");
-			}
+	public String extrasList() {		
+		return super.extrasList() +
+		
+	(this.luggageBox ? ("[✅ luggage box fitted.] ") : ("[❎ no luggage box fitted.]"));		
+			
 	}
-	public String extraInfo() {		
-		return ("test") +hasLuggageBox();
 	
-	}
 }
 	
 

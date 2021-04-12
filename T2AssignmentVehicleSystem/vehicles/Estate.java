@@ -29,13 +29,16 @@ public class Estate extends Car {
 	
 
 	@Override
-	public String fullInfo() {		
-		return super.fullInfo() +(" | Third Row Seat: ") +this.hasThirdRowSeat();
+	public String extrasList() {	
+		return super.extrasList() +
+		(this.thirdRowSeat ? ("[✅ third row seat] ") : ("[❎ No third row seat] "));
+		
+		}
 		
 		
 		
 		
-	}
+	
 	
 
 

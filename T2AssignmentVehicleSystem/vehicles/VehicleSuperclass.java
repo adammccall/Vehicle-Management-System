@@ -2,6 +2,9 @@ package vehicles;
 
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.List;
+
+import uod.gla.util.Reader;
 
 /**
  * @author Adam
@@ -32,8 +35,14 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 		
 	}
 
-	public void setColour(Colours colour) {
-		this.colour = colour;
+	public void setColour() {
+		System.out.println("The current colour is " +this.getColour());
+		 Colours newColour = Reader.readEnum("What colour is the vehicle now?", Colours.class);
+		 while (this.getColour() == newColour) {
+			System.out.println("This colour is the same as the previous one! Try again");
+			newColour = Reader.readEnum("What colour is the vehicle now?", Colours.class);
+		 } 
+		 this.colour = newColour;
 	}
 
 	public void setMileage() {
@@ -50,6 +59,39 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 		this.mileage = newMileage;	
 		System.out.println("The mileage has been updated. It is now: " +newMileage);
 	}
+	
+	public static <e> String setVin(List<VehicleSuperclass> list) {
+		 String answer = Reader.readLine("Please enter the VIN:", 11, 14);
+	String upperAnswer = answer.toUpperCase();
+
+	for (VehicleSuperclass e : list) {
+		if (e.getVin().equals(upperAnswer)) {
+			System.out.println("There is a match in the System, it is a " +e.vehicleName() +"\nTry Again."); 
+			answer = Reader.readLine("Please enter the VIN:", 11, 14);
+			upperAnswer = answer.toUpperCase();
+
+			for (VehicleSuperclass f : list) { 
+				if (f.getVin().equals(upperAnswer)) { 
+					System.out.println("There is a match in the System, it is a " +f.vehicleName());
+					answer = Reader.readLine("Please enter the VIN:", 11, 14);
+					upperAnswer = answer.toUpperCase();
+				} 
+			}
+			for (VehicleSuperclass g : list) { 
+				if (g.getVin().equals(upperAnswer)) { 
+					System.out.println("There is a match in the System, it is a " +g.vehicleName()
+					+"\nToo many attempts. Exiting Program"); 
+					System.exit(0);
+				} 
+			}
+
+		}
+
+
+	}
+		 return upperAnswer;
+		  
+	  }
 
 	
 //Getters 	
@@ -60,6 +102,10 @@ private Make getMake() {
 
 public String getModel() {
 	return model;
+}
+
+public String fullName() {
+	return this.make +" " +getModel();
 }
 
 int getYear() {
@@ -83,8 +129,8 @@ public String getVin() {
 }	
 	
 
-  public String fullInfo() { 
-	  return ("");
+  public String extrasList() { 
+	  return ("This ") +this.fullName() +" is a "+this.getClass().getSimpleName()  +"\n↪↪↪ It has: ";
   }
  
 
@@ -94,26 +140,17 @@ public String vehicleName() {
 
 public String toString() {
 	return String.format( "|%-18s|%-12s|%-20s|%-8d|%-13s|%-18s|%-5d", getVin(), getMake(), getModel(), getYear(), getColour(), getGearbox(), getMileage());
-//return ("VIN: "+getVin() +" Make: " +getMake() +" Model: " +getModel() +" Year: "  +getYear() +" Colour: " +getColour() +" Gearbox Type: " +getGearbox() +" Mileage: " +getMileage());
+
 	
 }
 
 
 public String toString(boolean extra) {
 	
-return String.format( "|%-18s|%-12s|%-20s|%-8d|%-13s|%-18s|%-5d", getVin(), getMake(), getModel(), getYear(), getColour(), getGearbox(), getMileage()) + 
-		(extra ? ("\n↪↪" +fullInfo()) : (""));
+return toString() + 
+		(extra ? ("\n↪↪" +extrasList()) : (""));
 }
 
-//private String extrasList() {
-//	if (this instanceof Estate) {
-//		return fullInfo();
-////		}
-////	if (this instanceof Motorbike) {
-////		return Motorbike.extraInfo();
-//	}else
-//	return "";	
-//}
 
 
 @Override

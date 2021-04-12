@@ -10,11 +10,7 @@ public class Saloon extends Car {
 
 	}
 	
-	@Override
-	public void fullInfo() {		
-		System.out.println("\nThe type of vehicle is an Estate Car.");
-		super.fullInfo();
-		}
+
 
 
 }

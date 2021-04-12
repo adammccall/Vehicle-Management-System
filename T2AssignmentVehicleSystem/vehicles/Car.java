@@ -71,12 +71,24 @@ public abstract class Car extends VehicleSuperclass {
 	}
 	
 
-	public String fullInfo() {	
-		super.fullInfo();
-		return ("This ") +this.getClass().getSimpleName() +(" has Satnav: ") +this.hasSatnav() +(" | Parking Sensors: ") +this.hasParkingSensors();
+	public String extrasList() {	
+	return super.extrasList() +
+	(this.parkingSensors ? ("[✅ parking sensors fitted] ") : ("[❎ No parking sensors] "))
+	+
+	(this.satnav ? ("[✅ Sat Nav fitted] ") : ("[❎ No Satnav] "))
+	+
+	(this.towBar ? ("[✅ tow bar fitted] ") : ("[❎ No Tow bar] "))
+	+
+	(this.roofRack ? ("[✅ Roof Rack fitted] ") : ("[❎ No roof rack] "));
+	
+	}
 		
 		
 	}
 	
+	
+		
 
-}
+	
+
+
