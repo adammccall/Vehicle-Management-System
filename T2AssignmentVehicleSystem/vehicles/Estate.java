@@ -2,7 +2,7 @@ package vehicles;
 
 public class Estate extends Car {
 	
-	private final boolean thirdRowSeat;
+	private boolean thirdRowSeat;
 
 	public Estate(Make make, String model, int year, Transmission gearbox,
 			Colours colour, int mileage, String vin, boolean satnav,
@@ -14,11 +14,18 @@ public class Estate extends Car {
 	
 
 	
-	private boolean hasThirdRowSeat() {
+	public boolean hasThirdRowSeat() {
 		return thirdRowSeat;
 	}
 
-	
+	public void addThirdRowSeat() {
+		if (this.thirdRowSeat) {
+			System.out.println("\nCannot add. There's alrady a third row seat fitted.\n");
+		} else {
+			this.thirdRowSeat = true;
+			System.out.println("\nThis vehicle now has a third row seat\n");
+			}
+	}
 	
 
 	@Override

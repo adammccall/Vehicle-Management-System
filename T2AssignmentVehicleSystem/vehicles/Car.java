@@ -18,7 +18,7 @@ public abstract class Car extends VehicleSuperclass {
 	}
 	
 	//helper methods
-	private boolean hasSatnav() {
+	public boolean hasSatnav() {
 		return satnav;
 	}
 	
@@ -31,7 +31,7 @@ public abstract class Car extends VehicleSuperclass {
 			}
 	}
 
-	private boolean hasParkingSensors() {
+	public boolean hasParkingSensors() {
 		return parkingSensors;
 	}
 
@@ -44,20 +44,20 @@ public abstract class Car extends VehicleSuperclass {
 			}
 	}
 	
-	private boolean hasTowBar() {
+	public boolean hasTowBar() {
 		return towBar;
 	}
 	
 	public void addTowBar() {
 		if (this.towBar) {
-			System.out.println("/nCannot add. There is already a tow bar added./n");
+			System.out.println("\nCannot add. There is already a tow bar added.\n");
 		} else {
 			this.towBar = true;
-			System.out.println("/nThe tow bar has been attached./n");
+			System.out.println("\nThe tow bar has been attached.\n");
 			}
 	}
 
-	private boolean hasRoofRack() {
+	public boolean hasRoofRack() {
 		return roofRack;
 	}
 
