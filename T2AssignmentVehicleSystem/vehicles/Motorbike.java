@@ -18,10 +18,10 @@ public class Motorbike extends VehicleSuperclass {
 	
 	public void addLuggageBox() {
 		if (luggageBox) {
-			System.out.println("/nCannot add. There is already a luggage box attached/n");
+			System.out.println("\nCannot add. There is already a luggage box attached\n");
 		} else {
 			luggageBox = true;
-			System.out.println("/nThe luggage box has been attached./n");
+			System.out.println("\nThe luggage box has been attached.\n");
 			}
 	}
 	

@@ -213,7 +213,12 @@ public class MainClass implements Finalisable {
 
 		System.out.println("\nCongratulations, you have sucessfully added the:" +make +" " +model +" to the database.\n");
 		
-		////////////////////////////////////////////////////////////////////
+		boolean answer = Reader.readBoolean("Would you like to add any extras to the vehicle now?");
+		
+		
+		if (answer) {
+			edit(vehicleList.get(vehicleList.size()-1));
+		}
 		
 	}// end of add new vehicle section
 
@@ -286,122 +291,147 @@ public class MainClass implements Finalisable {
 		return Reader.readObject("Please select a Vehicle from the list", results);
 	}
 
-	public static void edit() {
-
-		String key = Reader.readLine("Enter a search key for the vehicle you want to edit...");
-		System.out.println("the key is " +key);
-		VehicleSuperclass vehicle = search(key);
-		if (vehicle == null) {
-			System.out.println("No Vehicle found!");
-			return;
-		}
-
-
-		boolean edited = false;
-		
-		if (vehicle instanceof Car) {
-			if (((Car) vehicle).hasTowBar()) {
-
-				System.out.println("This vehicle already has a tow bar");
-
-			} else {
-				if (Reader.readBoolean("Do you want to add a towbar?")) 
-					((Car) vehicle).addTowBar();
-				edited = true;
-			}
-			if (((Car) vehicle).hasSatnav()) {
-
-				System.out.println("This vehicle already has a Sat Nav");
-
-			} else {
-				if (Reader.readBoolean("Do you want to add Sat Nav?")) 
-					((Car) vehicle).addSatnav();
-				edited = true;
-			}
-
-			if (((Car) vehicle).hasParkingSensors()) {
-
-				System.out.println("This vehicle already has parking sensors");
-
-			} else {
-				if (Reader.readBoolean("Do you want to add parking sensors?")) 
-					((Car) vehicle).addParkingSensors();
-				edited = true;
-			}
-
-			if (((Car) vehicle).hasRoofRack()) {
-
-				System.out.println("This vehicle already has a roof rack");
-
-			} else {
-				if (Reader.readBoolean("Do you want to add roof rack?")) 
-					((Car) vehicle).addRoofRack();
-				edited = true;
-			}
-		} 
-		
- if (vehicle instanceof Suv) {
-if (((Suv) vehicle).hasAllWheelDrive()) {
-        		
-        		System.out.println("This vehicle already has all wheel drive");
-        		
-        	} else {
-        		if (Reader.readBoolean("Do you want to add all wheel drive?")) 
-           ((Suv) vehicle).addAllWheelDrive();
-            edited = true;
-        }
-		}
 	
+	public static void edit() {
+		
+		String key = Reader.readLine("Enter a search key for the vehicle you want to edit...");
+	System.out.println("the key is " +key);
+	VehicleSuperclass vehicle = search(key);
+	if (vehicle == null) {
+		System.out.println("No Vehicle found!");
+		return;
+	}
+
+	editHelper(vehicle);}
+	
+	
+	
+	public static void edit(VehicleSuperclass prefilled) {
+		
+
+		if (prefilled != null ) {
+			
+			editHelper(prefilled);
+			
+		} else {
+
+		System.out.println("There's no vehicle to edit.");
+		
+		}
+
+		
+	}
+		
+		
+		private static void editHelper(VehicleSuperclass vehicle){
+			boolean edited = false;
+			
+			if (vehicle instanceof Car) {
+				if (((Car) vehicle).hasTowBar()) {
+
+					System.out.println("This vehicle already has a tow bar");
+
+				} else {
+					if (Reader.readBoolean("Do you want to add a towbar?")) 
+						((Car) vehicle).addTowBar();
+					edited = true;
+				}
+				if (((Car) vehicle).hasSatnav()) {
+
+					System.out.println("This vehicle already has a Sat Nav");
+
+				} else {
+					if (Reader.readBoolean("Do you want to add Sat Nav?")) 
+						((Car) vehicle).addSatnav();
+					edited = true;
+				}
+
+				if (((Car) vehicle).hasParkingSensors()) {
+
+					System.out.println("This vehicle already has parking sensors");
+
+				} else {
+					if (Reader.readBoolean("Do you want to add parking sensors?")) 
+						((Car) vehicle).addParkingSensors();
+					edited = true;
+				}
+
+				if (((Car) vehicle).hasRoofRack()) {
+
+					System.out.println("This vehicle already has a roof rack");
+
+				} else {
+					if (Reader.readBoolean("Do you want to add roof rack?")) 
+						((Car) vehicle).addRoofRack();
+					edited = true;
+				}
+			} 
+			
+	 if (vehicle instanceof Suv) {
+	if (((Suv) vehicle).hasAllWheelDrive()) {
+	        		
+	        		System.out.println("This vehicle already has all wheel drive");
+	        		
+	        	} else {
+	        		if (Reader.readBoolean("Do you want to add all wheel drive?")) 
+	           ((Suv) vehicle).addAllWheelDrive();
+	            edited = true;
+	        }
+			}
 		
 			
-		{ if (vehicle instanceof Estate) {
-if (((Estate) vehicle).hasThirdRowSeat()) {
-        		
-        		System.out.println("This vehicle already has third row seat");
-        		
-        	} else {
-        		if (Reader.readBoolean("Do you want to add a third row seat?")) 
-           ((Estate) vehicle).addThirdRowSeat();
-            edited = true;
-        }
+				
+			{ if (vehicle instanceof Estate) {
+	if (((Estate) vehicle).hasThirdRowSeat()) {
+	        		
+	        		System.out.println("This vehicle already has third row seat");
+	        		
+	        	} else {
+	        		if (Reader.readBoolean("Do you want to add a third row seat?")) 
+	           ((Estate) vehicle).addThirdRowSeat();
+	            edited = true;
+	        }
+			}
+			
 		}
-		
-	}
 
-		
-		 if (vehicle instanceof Motorbike) {
-			 if (((Motorbike) vehicle).hasLuggageBox()) {
-			         		
-			         		System.out.println("This vehicle already has a luggage box");
-			         		if (Reader.readBoolean("\n Do you want to remove the luggage box?")) {
-			         			 ((Motorbike) vehicle).removeLuggageBox();
-			         		}
-			         		
-			         	} else {
-			         		if (Reader.readBoolean("Do you want to add a luggage box?")) 
-			            ((Motorbike) vehicle).addLuggageBox();
-			             edited = true;
-			         }
-			 		}
-		 if (Reader.readBoolean("Do you want to change the colour of the " +vehicle.fullName()+"?")) {
-			 vehicle.setColour();
-			 edited = true;
-		
-		 }
-		 
-		 if (Reader.readBoolean("Do you want to change the mileage of the " +vehicle.fullName()+"?")) {
+			
+			 if (vehicle instanceof Motorbike) {
+				 if (((Motorbike) vehicle).hasLuggageBox()) {
+				         		
+				         		System.out.println("This vehicle already has a luggage box");
+				         		if (Reader.readBoolean("\n Do you want to remove the luggage box?")) {
+				         			 ((Motorbike) vehicle).removeLuggageBox();
+				         		}
+				         		
+				         	} else {
+				         		if (Reader.readBoolean("Do you want to add a luggage box?")) 
+				            ((Motorbike) vehicle).addLuggageBox();
+				             edited = true;
+				         }
+				 		}
+			 if (Reader.readBoolean("Do you want to change the colour of the " +vehicle.fullName()+"?")) {
+				 vehicle.setColour();
+				 edited = true;
+			
+			 }
 			 
-			 vehicle.setMileage();
-			 edited = true;
-		 }
+			 if (Reader.readBoolean("Do you want to change the mileage of the " +vehicle.fullName()+"?")) {
+				 
+				 vehicle.setMileage();
+				 edited = true;
+			 }
 
 
-		if (edited) {
-			System.out.println("Person successfully updated!");
-		} else {
-			System.out.println("No detail was changed!");
+			if (edited) {
+				System.out.println("Person successfully updated!");
+			} else {
+				System.out.println("No detail was changed!");
+			}
+			
+			
+			
 		}
-	}
 
 	public static void remove() {
 
