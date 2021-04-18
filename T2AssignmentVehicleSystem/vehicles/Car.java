@@ -63,14 +63,14 @@ public abstract class Car extends VehicleSuperclass {
 
 	public void addRoofRack() {
 		if (this.roofRack) {
-			System.out.println("\nCannot add. There is already a satnav added.\n");
+			System.out.println("\nCannot add. There is already a roof rack added.\n");
 		} else {
 			this.roofRack = true;
-			System.out.println("\nThe satnav has been attached.\n");
+			System.out.println("\nThe roof rack has been attached.\n");
 			}
 	}
 	
-
+@Override
 	public String extrasList() {	
 	return super.extrasList() +
 	(this.parkingSensors ? ("[✅ parking sensors fitted] ") : ("[❎ No parking sensors] "))
