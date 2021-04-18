@@ -58,8 +58,9 @@ public class MainClass implements Finalisable {
       MenuItem m = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
       MenuItem d = new MenuItem("D", "Display all Vehicles, and see all thier details", appObject, "display");
       MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
+      MenuItem v = new MenuItem("V", "Display a single vehicle's details", appObject, "displaySingle");
       MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
-      MenuBuilder.displayMenu(appObject, m, d, s, r); //, e, m, p, v
+      MenuBuilder.displayMenu(appObject, m, d, s, v, r); //, e, m, p, v
 
       // save to disk at shutdown
       appObject.finalise();
@@ -75,10 +76,10 @@ public class MainClass implements Finalisable {
       // Menu options
       MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
       MenuItem d = new MenuItem("D", "Display all Vehicles, and see all thier details", appObject, "display");
+      MenuItem v = new MenuItem("V", "Display a single vehicle's details", appObject, "displaySingle");
       MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
       MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
-      MenuBuilder.displayMenu(appObject, a, d, s, r); //, e, m, p, v
-
+      MenuBuilder.displayMenu(appObject, a, d,v, s, r); 
       // save to disk at shutdown
       appObject.finalise();
       System.out.println("Thanks for using this app, and remember, sales = success!");
@@ -90,6 +91,8 @@ public class MainClass implements Finalisable {
     vehicleManagementFile.save((Serializable) vehicleList);
   }
 
+  
+  //sub menu generated to add vehicles by type.
   public static void addNew() {
 
     System.out.println("What type of vehicle would you like to add?" + "\nSelect a vehicle type from the list below:");
@@ -102,7 +105,7 @@ public class MainClass implements Finalisable {
     MenuItem su = new MenuItem("SUV", "SUV", appObject, "suv");
     MenuBuilder.displayMenuOnce(a, d, s, r, su); //, e, m, p, v
 
-  } // end of add new vehicle section
+  } 
 
   public static void estate() {
     vehicleBuilder("e");
@@ -156,9 +159,7 @@ public class MainClass implements Finalisable {
 
     //Input needed for ALL VEHICLES
     make = Reader.readEnum("enter the manufacturer of the vehicle", Make.class);
-    System.out.println("What is the model of the " + make + "?");
-    String modelLower = keyboard.next();
-    model = modelLower.substring(0, 1).toUpperCase() + modelLower.substring(1);
+    model = toTitleCase(Reader.readLine("What is the model of the " + make + "?", 1, 20));
     LocalDate date = LocalDate.now();
     int currentYear = date.getYear();
     year = Reader.readInt("What is the registration year of the " + make + " " + model + "?", currentYear - 150, currentYear);
@@ -311,6 +312,19 @@ public class MainClass implements Finalisable {
     }
     return readObject("Please select a Vehicle from the list", results);
   }
+  
+  public static void displaySingle() {
+
+	    String key = Reader.readLine("Enter a search key for the vehicle you want to display the detils for");
+	    VehicleSuperclass vehicle = search(key);
+	    if (vehicle == null) {
+	      System.out.println("No Vehicle found!");
+	      return;
+	    }
+	    System.out.println("\n<<<---------------------------------------<<<" +vehicle.fullName() +">>>---------------------------------------->>>");
+	    System.out.println(String.format("|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "Vin", "Make", "Model", "Year", "Colour", "transmission", "mileage"));
+	    System.out.println(vehicle.toString(true));
+	  }
 
   public static void edit() {
 
@@ -487,6 +501,18 @@ public class MainClass implements Finalisable {
     }
     return selection;
   }
+  
+  // Thanks to Vilpe89 for this code 
+  public static String toTitleCase(String givenString) {
+	    String[] arr = givenString.split(" ");
+	    StringBuffer sb = new StringBuffer();
+
+	    for (int i = 0; i < arr.length; i++) {
+	        sb.append(Character.toUpperCase(arr[i].charAt(0)))
+	            .append(arr[i].substring(1)).append(" ");
+	    }          
+	    return sb.toString().trim();
+	} 
 
   public static void demoVehicles() {
 
@@ -514,5 +540,7 @@ public class MainClass implements Finalisable {
     System.out.println("10x demo vehicles have been added to the system");
 
   }
+  
+
 
 }
