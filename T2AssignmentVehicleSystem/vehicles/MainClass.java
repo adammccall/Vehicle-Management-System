@@ -97,7 +97,7 @@ public class MainClass implements Finalisable {
 
     System.out.println("What type of vehicle would you like to add?" + "\nSelect a vehicle type from the list below:");
 
-    // Menu options
+    // Vehicle type menue options
     MenuItem a = new MenuItem("E", "estate", appObject, "estate");
     MenuItem d = new MenuItem("H", "hatchback", appObject, "hatchback");
     MenuItem s = new MenuItem("M", "motorbike", appObject, "motorbike");
@@ -107,6 +107,7 @@ public class MainClass implements Finalisable {
 
   } 
 
+  // calls the vehicle builder method and tells it what vehicle types have been added
   public static void estate() {
     vehicleBuilder("e");
 
@@ -128,7 +129,7 @@ public class MainClass implements Finalisable {
     vehicleBuilder("suv");
 
   }
-
+// gets the information about the vehicle to be added
   private static void vehicleBuilder(String vehicleType) {
 
     Scanner keyboard = new Scanner(System. in );
@@ -188,8 +189,8 @@ public class MainClass implements Finalisable {
     vin = VehicleSuperclass.setVin(vehicleList);
 
     //Switch to assign the variables to the selected vehicle type.
-    //Puts the vehicle into the custom array (As opposed to the predefined one for NO answer)
-    //object "name" references start at f as predefined ones below are a-e.
+    //Puts the vehicle into the vehicleList
+ 
     switch (vehicleType) {
     case "h":
       HatchBack f = new HatchBack(make, model, year, gearbox, colour, mileage, vin, satnav, parkingSensors, towBar, roofRack);
@@ -220,22 +221,31 @@ public class MainClass implements Finalisable {
 
     boolean answer = Reader.readBoolean("Would you like to add any extras to the vehicle now?");
 
+    //if true, go to the edit method to add/removed options for selected vehicle
     if (answer) {
       edit(vehicleList.get(vehicleList.size() - 1));
     }
   }
 
+  
+  //displays all vehicles without searching
   public static void display() {
 
+	  //alert the user if vehicle list is empty. Only would be needed if all vehicles were removed.
     if (vehicleList.isEmpty()) {
       System.out.println("\n***Vehicle list is empty, please add a vehicle first!***\n");
     } else {
 
+    	//gives user the option to see the extras or just display the vehicles
       boolean extraInfo = Reader.readBoolean("Would you like to see the optional extras?");
+      
+      //give the user option to sort the list in different ways
       sortOptions sortBy = Reader.readEnum("How would you like to sort the details list?", sortOptions.class);
 
+      //displays how many vehicles are in the database.
       System.out.println("\nThere are " + vehicleList.size() + " Vehicles saved to the database, they will be displayed below\n\n");
 
+      //normal sort
       if (sortBy == sortOptions.NORMAL) {
         System.out.println("<<<---------------------------------<<<Standard Sort (Make, Model, Year)>>>---------------------------------->>>");
         System.out.println(String.format("%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "id", "Vin", "Make", "Model", "Year", "Colour", "transmission", "mileage"));
@@ -248,9 +258,11 @@ public class MainClass implements Finalisable {
         }
       }
 
+      //sort by year
       if (sortBy == sortOptions.BY_YEAR) {
         System.out.println("\n<<<----------------------------------------------<<<by year>>>----------------------------------------------->>>");
 
+        //sort edit
         Comparator < VehicleSuperclass > sortByYear = new Comparator < VehicleSuperclass > () {
           public int compare(VehicleSuperclass e1, VehicleSuperclass e2) {
             if (e1.getYear() < e2.getYear()) {
@@ -273,10 +285,12 @@ public class MainClass implements Finalisable {
 
         }
       }
-
+//sort by mileage
       if (sortBy == sortOptions.BY_MILEAGE) {
         System.out.println("\n<<<----------------------------------------------<<<by Mileage>>>----------------------------------------------->>>");
 
+        
+        // sort edit
         Comparator < VehicleSuperclass > sortByMileage = new Comparator < VehicleSuperclass > () {
           public int compare(VehicleSuperclass e1, VehicleSuperclass e2) {
             if (e1.getMileage() < e2.getMileage()) {
@@ -304,7 +318,7 @@ public class MainClass implements Finalisable {
 
   }
 
-  // Notice that this method is private. It is only used internally
+// private method to search. USed in multiple methods internally.
   private static VehicleSuperclass search(String key) {
     Collection < VehicleSuperclass > results = CollectionUtils.search(key, vehicleList);
     if (results == null || results.isEmpty()) {
@@ -313,9 +327,10 @@ public class MainClass implements Finalisable {
     return readObject("Please select a Vehicle from the list", results);
   }
   
+  //method to search and display only one vehicle.
   public static void displaySingle() {
 
-	    String key = Reader.readLine("Enter a search key for the vehicle you want to display the detils for");
+	    String key = Reader.readLine("Enter a search key for the vehicle you want to display the details for");
 	    VehicleSuperclass vehicle = search(key);
 	    if (vehicle == null) {
 	      System.out.println("No Vehicle found!");
@@ -326,6 +341,8 @@ public class MainClass implements Finalisable {
 	    System.out.println(vehicle.toString(true));
 	  }
 
+  
+  // method to edit a vehicle. This one is called by the menu builder only
   public static void edit() {
 
     String key = Reader.readLine("Enter a search key for the vehicle you want to edit...");
@@ -338,6 +355,7 @@ public class MainClass implements Finalisable {
     editHelper(vehicle);
   }
 
+  //this method is called from the add method.
   public static void edit(VehicleSuperclass prefilled) {
 
     if (prefilled != null) {
@@ -346,11 +364,13 @@ public class MainClass implements Finalisable {
 
     } else {
 
-      System.out.println("There's no vehicle to edit.");
+      System.out.println("Error! There's no vehicle to edit.");
 
     }
 
   }
+  
+  
   //private as it is only called upon by the edit classes.
   private static void editHelper(VehicleSuperclass vehicle) {
     boolean edited = false;
@@ -502,7 +522,7 @@ public class MainClass implements Finalisable {
     return selection;
   }
   
-  // Thanks to Vilpe89 for this code 
+  // Changes lowercase text to capitalise the first letter. Thanks to Vilpe89 for this code 
   public static String toTitleCase(String givenString) {
 	    String[] arr = givenString.split(" ");
 	    StringBuffer sb = new StringBuffer();
@@ -514,6 +534,8 @@ public class MainClass implements Finalisable {
 	    return sb.toString().trim();
 	} 
 
+  
+  //method to load in 10x demo vehicle's into the system
   public static void demoVehicles() {
 
     HatchBack a = new HatchBack(Make.AUDI, "TT", 1992, Transmission.MANUAL, Colours.ORANGE, 23, "K5HMK4U5D4RYB", false, false, true, false);
