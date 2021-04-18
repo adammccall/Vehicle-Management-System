@@ -32,31 +32,48 @@ public class MainClass implements Finalisable {
 	public static void main(String[] args) {
 
 		// Welcome message
-		System.out.println("Welcome to Chi's Car Showroom");
+		System.out.println("Welcome to Chi's Car Showroom \n\"Where All Your Vehicular Dreams Come True\"™ \n© Chi 2021 all rights reserved.");
 		MenuBuilder.setDefaultPrompt("Choose an option from the list...");
 
 		// retrieve data from disk at start up
 		List<VehicleSuperclass> retrievedVehicleDatabase = vehicleManagementFile.<List<VehicleSuperclass>>retrieve(true);
 
-		//System.out.println("Database size is:" +retrievedVehicleDatabase.size());
-		// System.out.println("Vehicle list size is:" +vehicleList.size());
+		System.out.println("\n-----------------System Status----------------");
+		System.out.println("The Database size saved to disk has: " +retrievedVehicleDatabase.size() +" vehicles.");
+		
 
-		if (retrievedVehicleDatabase != null) {
+		if (retrievedVehicleDatabase.isEmpty()) {
+			System.out.println("Error! no vheicles detected, please create one.");
+			System.out.println("----------------Checks complete---------------");
+			
+			// Menu options
+			MenuItem a = new MenuItem("A", "Add the first vehicle into the system", appObject, "addNew");
+			MenuBuilder.displayMenu(appObject, a); 
+
+			// save to disk at shutdown
+			appObject.finalise();
+			System.out.println("Thanks for using this app, and remember, sales = success!");
+
+		} else
+		{
 			vehicleList  = retrievedVehicleDatabase;
-		}
+			System.out.println("The program has successfully loaded: " +vehicleList.size() +" vehicles into memory.");
+			System.out.println("----------------Checks complete---------------");
+			
+			// Menu options
+			MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
+			MenuItem d = new MenuItem("D", "Display all Vehicles", appObject, "display");
+			MenuItem e = new MenuItem("E", "Edit a vehicle's details", appObject, "edit");
+			MenuItem s = new MenuItem("S", "Search for a vehicle to display its details", appObject, "Search");
+			MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
+			MenuItem v = new MenuItem("V", "Divorce two persons", appObject, "divorce");
+			MenuBuilder.displayMenu(appObject, a,d,e,s,r); //, e, m, p, v
 
-		// Menu options
-		MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
-		MenuItem d = new MenuItem("D", "Display all Vehicles", appObject, "display");
-		MenuItem e = new MenuItem("E", "Edit a vehicle's details", appObject, "edit");
-		MenuItem s = new MenuItem("S", "Search for a vehicle to display its details", appObject, "Search");
-		MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
-		MenuItem v = new MenuItem("V", "Divorce two persons", appObject, "divorce");
-		MenuBuilder.displayMenu(appObject, a,d,e,s,r); //, e, m, p, v
+			// save to disk at shutdown
+			appObject.finalise();
+			System.out.println("Thanks for using this app, and remember, sales = success!");
+		} 
 
-		// save to disk at shutdown
-		appObject.finalise();
-		System.out.println("Thanks for using this app!");
 
 
 
@@ -102,7 +119,13 @@ public class MainClass implements Finalisable {
 
 
 
-		System.out.println("What type of vehicle would you like to add?\nE for estate\nH for hatchback\nM for motorbike\nS for saloon\nSUV for SUV.");
+		System.out.println("What type of vehicle would you like to add?"
+				+ "\nSelect a vehicle type from the list below:"
+				+ "\nE for estate"
+				+ "\nH for hatchback"
+				+ "\nM for motorbike"
+				+ "\nS for saloon"
+				+ "\nSUV for SUV");
 		String vehicleType = keyboard.next();
 
 
@@ -130,7 +153,8 @@ public class MainClass implements Finalisable {
 		}
 
 
-		System.out.println("Is the " +make +" automatic or manual transmission. Enter A or M");
+		System.out.println("Is the " +make +" automatic or manual transmission? "
+				+ "\nEnter A for automatic or M for Manual");
 		String transmissionS = keyboard.next();
 
 
@@ -187,7 +211,10 @@ public class MainClass implements Finalisable {
 		}
 
 
-		System.out.println(make +" " +model +" has been successfully added.\n");
+		System.out.println("\nCongratulations, you have sucessfully added the:" +make +" " +model +" to the database.\n");
+		
+		////////////////////////////////////////////////////////////////////
+		
 	}// end of add new vehicle section
 
 	public static void display() {
