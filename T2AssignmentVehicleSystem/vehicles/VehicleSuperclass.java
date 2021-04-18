@@ -1,7 +1,6 @@
 package vehicles;
 
 import java.io.Serializable;
-import java.util.Comparator;
 import java.util.List;
 
 import uod.gla.util.Reader;
@@ -13,6 +12,10 @@ import uod.gla.util.Reader;
 public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>, Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7156778326812624144L;
 	//most are final, as the fields are not changed in the superclass. 
 	private final Make make;
 	private final String model;
@@ -35,6 +38,7 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 		
 	}
 
+	//set colour. Tone of voice is as if they have already selected a colour which is correct.
 	public void setColour() {
 		System.out.println("The current colour is " +this.getColour());
 		 Colours newColour = Reader.readEnum("What colour is the vehicle now?", Colours.class);
@@ -60,12 +64,16 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 		System.out.println("The mileage has been updated. It is now: " +newMileage);
 	}
 	
-	public static <e> String setVin(List<VehicleSuperclass> list) {
+	//setVin takes the answer, and makes it all upper case.
+	public static String setVin(List<VehicleSuperclass> list) {
 		 String answer = Reader.readLine("Please enter the VIN:", 11, 14);
 	String upperAnswer = answer.toUpperCase();
-
+//This cycles through all other VIN's in the list to check for a match. Tries 3 times.
+ 
 	for (VehicleSuperclass e : list) {
 		if (e.getVin().equals(upperAnswer)) {
+			
+			//shows what the match is.
 			System.out.println("There is a match in the System, it is a " +e.vehicleName() +"\nTry Again."); 
 			answer = Reader.readLine("Please enter the VIN:", 11, 14);
 			upperAnswer = answer.toUpperCase();
@@ -80,8 +88,8 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 			for (VehicleSuperclass g : list) { 
 				if (g.getVin().equals(upperAnswer)) { 
 					System.out.println("There is a match in the System, it is a " +g.vehicleName()
-					+"\nToo many attempts. Exiting Program"); 
-					System.exit(0);
+					+"\nToo many attempts."); 
+					throw new IllegalArgumentException("Too many attempts of the VIN but still a match!");
 				} 
 			}
 
@@ -129,6 +137,8 @@ public String getVin() {
 }	
 	
 
+//extras list is used to show the optional extras in the toSring method that has a boolean argument.
+
   public String extrasList() { 
 	  return ("This ") +this.fullName() +" is a "+this.getClass().getSimpleName()  +"\n↪↪↪ It has: ";
   }
@@ -138,13 +148,14 @@ public String vehicleName() {
 	return getMake() +" " +getModel();
 }
 
+//standard toString
 public String toString() {
 	return String.format( "|%-18s|%-12s|%-20s|%-8d|%-13s|%-18s|%-5d", getVin(), getMake(), getModel(), getYear(), getColour(), getGearbox(), getMileage());
 
 	
 }
 
-
+// overloaded toString requesting more info.
 public String toString(boolean extra) {
 	
 return toString() + 

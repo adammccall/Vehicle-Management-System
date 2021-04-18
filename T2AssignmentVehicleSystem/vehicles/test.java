@@ -1,9 +1,5 @@
 package vehicles;
 
-import java.util.ArrayList;
-
-import uod.gla.util.Reader;
-
 
 
 public class test {

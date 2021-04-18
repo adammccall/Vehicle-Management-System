@@ -2,6 +2,10 @@ package vehicles;
 
 public class Motorbike extends VehicleSuperclass {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2382705355270155110L;
 	private boolean luggageBox;
 
 	public Motorbike(Make make, String model, int year, Transmission gearbox,

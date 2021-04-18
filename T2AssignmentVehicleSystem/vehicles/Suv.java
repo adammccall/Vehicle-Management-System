@@ -2,6 +2,10 @@ package vehicles;
 
 public class Suv extends Car {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7422662824685490123L;
 	private boolean allWheelDrive;
 
 	public Suv(Make make, String model, int year, Transmission gearbox,

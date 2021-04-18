@@ -1,10 +1,6 @@
 package vehicles;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import uod.gla.util.Reader;
 
 public final class UserInput {
 	

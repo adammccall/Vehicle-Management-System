@@ -2,6 +2,10 @@ package vehicles;
 
 public abstract class Car extends VehicleSuperclass {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5220751705829568666L;
 	private boolean satnav;
 	private boolean parkingSensors;
 	private boolean towBar;

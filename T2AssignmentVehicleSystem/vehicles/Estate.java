@@ -2,6 +2,10 @@ package vehicles;
 
 public class Estate extends Car {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4125033424176733688L;
 	private boolean thirdRowSeat;
 
 	public Estate(Make make, String model, int year, Transmission gearbox,

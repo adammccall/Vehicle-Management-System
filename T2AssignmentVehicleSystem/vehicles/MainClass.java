@@ -225,6 +225,8 @@ public class MainClass implements Finalisable {
     if (answer) {
       edit(vehicleList.get(vehicleList.size() - 1));
     }
+    
+    keyboard.close();
   }
 
   
