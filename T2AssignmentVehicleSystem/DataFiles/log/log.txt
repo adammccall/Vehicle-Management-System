@@ -288,3 +288,17 @@ java.lang.IllegalArgumentException: Invalid boolean format!
 
 **********************
 
+Sun, April 18, 2021. 12:22:17
+java.lang.IllegalArgumentException: Invalid boolean format!
+	at uod.gla.util.Reader.readBoolean(Reader.java:430)
+	at vehicles.MainClass.display(MainClass.java:205)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:244)
+	at uod.gla.menu.MenuBuilder.displayMenu(MenuBuilder.java:102)
+	at vehicles.MainClass.main(MainClass.java:61)
+
+**********************
+
