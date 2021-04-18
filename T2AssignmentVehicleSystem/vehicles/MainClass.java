@@ -19,7 +19,7 @@ import uod.gla.util.Reader;
 public class MainClass implements Finalisable {
 	private static List <VehicleSuperclass> vehicleList = new ArrayList <>();
 
-	// This is used to "serialise" the list of persons
+	// This is used to "serialise" the list of vehicles
 	private static File vehicleManagementFile = new File("savedData", "vehicleDatabase");
 
 	// The object on which the name of the method to be invoked is searched for
@@ -63,11 +63,9 @@ public class MainClass implements Finalisable {
 			// Menu options
 			MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
 			MenuItem d = new MenuItem("D", "Display all Vehicles", appObject, "display");
-			MenuItem e = new MenuItem("E", "Edit a vehicle's details", appObject, "edit");
-			MenuItem s = new MenuItem("S", "Search for a vehicle to display its details", appObject, "Search");
+			MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
 			MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
-			MenuItem v = new MenuItem("V", "Divorce two persons", appObject, "divorce");
-			MenuBuilder.displayMenu(appObject, a,d,e,s,r); //, e, m, p, v
+			MenuBuilder.displayMenu(appObject, a,d,s,r); //, e, m, p, v
 
 			// save to disk at shutdown
 			appObject.finalise();
@@ -270,10 +268,37 @@ public class MainClass implements Finalisable {
 
 
 				}
+			}
+			
+			if (sortBy == sortOptions.BY_MILEAGE) {
+				System.out.println("\n<<<----------------------------------------------<<<by Mileage>>>----------------------------------------------->>>");
 
 
+				Comparator<VehicleSuperclass> sortByMileage = new Comparator<VehicleSuperclass>() {
+					public int compare(VehicleSuperclass e1, VehicleSuperclass e2) {
+						if(e1.getMileage() < e2.getMileage()) {
+							return -1;
+						} else if (e1.getMileage() > e2.getMileage()) {
+							return 1;
+						} else {
+							return 0;
+						}
+					}
 
-			}}
+				};
+
+				System.out.println(String.format( "%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "ID", "Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
+				System.out.println("----------------------------------------------------------------------------------------------------------------");
+				Collections.sort(vehicleList,sortByMileage);
+				for (VehicleSuperclass i : vehicleList) { 
+					System.out.print(String.format("%-9d", vehicleList.indexOf(i)+1));
+					System.out.println(i.toString(extraInfo));
+
+
+				}
+			}
+			
+		}
 
 
 
@@ -288,7 +313,7 @@ public class MainClass implements Finalisable {
 		if (results == null || results.isEmpty()) {
 			return null;
 		}
-		return Reader.readObject("Please select a Vehicle from the list", results);
+		return readObject("Please select a Vehicle from the list", results);
 	}
 
 	
@@ -424,9 +449,9 @@ public class MainClass implements Finalisable {
 
 
 			if (edited) {
-				System.out.println("Person successfully updated!");
+				System.out.println("vehicle successfully updated!");
 			} else {
-				System.out.println("No detail was changed!");
+				System.out.println("No updates were made!");
 			}
 			
 			
@@ -448,12 +473,56 @@ public class MainClass implements Finalisable {
 			vehicleList.remove(vehicle);
 			System.out.println("Contact has been successfully deleted!");
 		} else {
-			System.out.println("Deletion aborted!");
+			System.out.println("No cahnge was made and no deletions have occured.");
 		}
 
 
 	}
-
+		
+		
+		
+		
+	
+	/*
+	 *The below code uses the readObject method from the Utility API so that it can display
+	 * the header, and the returned list looks nice.
+	 */
+	
+	
+	
+	
+	
+	
+	public static <T> T readObject(String prompt, Collection<T> objects)
+            throws IllegalArgumentException {
+        if (objects == null || objects.isEmpty()) {
+            throw new IllegalArgumentException("Collection is null or empty!");
+        } else if (objects.size() == 1) {
+            return new ArrayList<>(objects).get(0);
+        }
+        boolean ceaseLoop = false;
+        T selection = null;
+        List<T> list = new ArrayList<>(objects);
+        while (!ceaseLoop) {
+            System.out.println(prompt == null ? "Please select an object" : prompt);
+            System.out.println("<<<---------------------------------<<<Standard Sort (Make, Model, Year)>>>---------------------------------->>>");
+			System.out.println(String.format( "%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "id", "Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
+			System.out.println("----------------------------------------------------------------------------------------------------------------");
+            int count = 0;
+            for (T object : list) {
+                System.out.println(++count + ":\t "
+                        + object.toString().replace("\n", "\n\t"));
+            }
+            int objectIndex = Reader.readInt("Enter the option number", 1, list.size());
+            selection = list.get(objectIndex - 1);
+            System.out.println("You have selected...\n");
+            System.out.println(String.format( "|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s","Vin", "Make", "Model", "Year","Colour","transmission","mileage"));
+            System.out.println("--------------------------------------------------------------------------------------------------------");
+            System.out.println(selection);
+            ceaseLoop = Reader.readBoolean("Is that correct? (Y/N)");
+        }
+        return selection;
+    }
 
 }
 

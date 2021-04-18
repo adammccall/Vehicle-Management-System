@@ -12,9 +12,9 @@ public enum sortOptions {
 				  return "By year";
 			  }
 		  },
-		  BY_COLOUR{
+		  BY_MILEAGE{
 			  public String toString() {
-				  return "by colour";
+				  return "by Mileage";
 			  }
 		  }
 

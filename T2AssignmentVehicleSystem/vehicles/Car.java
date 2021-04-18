@@ -24,10 +24,10 @@ public abstract class Car extends VehicleSuperclass {
 	
 	public void addSatnav() {
 		if (this.satnav) {
-			System.out.println("/nCannot add. There is already a satnav added./n");
+			System.out.println("\nCannot add. There is already a satnav added.\n");
 		} else {
 			this.satnav = true;
-			System.out.println("/nThe satnav has been attached./n");
+			System.out.println("\nThe satnav has been attached.\n");
 			}
 	}
 
@@ -37,10 +37,10 @@ public abstract class Car extends VehicleSuperclass {
 
 	public void addParkingSensors() {
 		if (this.parkingSensors) {
-			System.out.println("/nCannot add. There is already parking sensors added./n");
+			System.out.println("\nCannot add. There is already parking sensors added.\n");
 		} else {
 			this.parkingSensors = true;
-			System.out.println("/nThe parking sensors have been attached./n");
+			System.out.println("\nThe parking sensors have been attached.\n");
 			}
 	}
 	
@@ -63,10 +63,10 @@ public abstract class Car extends VehicleSuperclass {
 
 	public void addRoofRack() {
 		if (this.roofRack) {
-			System.out.println("/nCannot add. There is already a satnav added./n");
+			System.out.println("\nCannot add. There is already a satnav added.\n");
 		} else {
 			this.roofRack = true;
-			System.out.println("/nThe satnav has been attached./n");
+			System.out.println("\nThe satnav has been attached.\n");
 			}
 	}
 	
