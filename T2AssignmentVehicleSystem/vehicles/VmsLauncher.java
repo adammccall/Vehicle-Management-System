@@ -15,7 +15,7 @@ import uod.gla.menu.MenuItem;
 import uod.gla.util.CollectionUtils;
 import uod.gla.util.Reader;
 
-public class MainClass implements Finalisable {
+public class VmsLauncher implements Finalisable {
   private static List < VehicleSuperclass > vehicleList = new ArrayList < >();
 
   // Where the serialised vehicle data will be stored
@@ -23,7 +23,7 @@ public class MainClass implements Finalisable {
 
   // The object on which the name of the method to be invoked is searched for
   // Also used to provide access to the non-static methods e.g. finalise
-  private static MainClass appObject = new MainClass();
+  private static VmsLauncher appObject = new VmsLauncher();
 
   static int ATTEMPTS = 3; //set the amount of attempts before an error.
 
@@ -57,10 +57,10 @@ public class MainClass implements Finalisable {
    // Menu options that will be displayed after the previous one has complete 
       MenuItem m = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
       MenuItem d = new MenuItem("D", "Display all Vehicles, and see all thier details", appObject, "display");
-      MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
-      MenuItem v = new MenuItem("V", "Search for, and display a single vehicle's full details", appObject, "displaySingle");
+      MenuItem e = new MenuItem("E", "Search a vehicle, and edit its details", appObject, "edit");
+      MenuItem s = new MenuItem("S", "Search for, and display a single vehicle's full details", appObject, "displaySingle");
       MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
-      MenuBuilder.displayMenu(appObject, m, d, s, v, r); //, e, m, p, v
+      MenuBuilder.displayMenu(appObject, m, d, e, s, r); 
 
       // save to disk at shutdown
       appObject.finalise();
@@ -76,10 +76,10 @@ public class MainClass implements Finalisable {
       // Menu options
       MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
       MenuItem d = new MenuItem("D", "Display all Vehicles, and see all thier details", appObject, "display");
-      MenuItem v = new MenuItem("V", "Search for, and display a single vehicle's full details", appObject, "displaySingle");
-      MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
+      MenuItem s = new MenuItem("S", "Search for, and display a single vehicle's full details", appObject, "displaySingle");
+      MenuItem e = new MenuItem("E", "Search a vehicle, and edit its details", appObject, "edit");
       MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
-      MenuBuilder.displayMenu(appObject, a, d,v, s, r); 
+      MenuBuilder.displayMenu(appObject, a, d,s, e, r); 
       // save to disk at shutdown
       appObject.finalise();
       System.out.println("Thanks for using this app, and remember, sales = success!");
@@ -473,7 +473,7 @@ public class MainClass implements Finalisable {
 
   public static void remove() {
 	  
-	  removeOptions answer = Reader.readEnum("What would you like to do?", MainClass.removeOptions.class);
+	  removeOptions answer = Reader.readEnum("What would you like to do?", VmsLauncher.removeOptions.class);
 
 	  //this is just for Chi to quickly clear the loaded vehicles from memory.
 	  if (answer == removeOptions.DELETE_ALL) {
@@ -537,7 +537,7 @@ public class MainClass implements Finalisable {
     List < T > list = new ArrayList < >(objects);
     while (!ceaseLoop) {
       System.out.println(prompt == null ? "Please select an object": prompt);
-      System.out.println("<<<---------------------------------<<<Standard Sort (Make, Model, Year)>>>---------------------------------->>>");
+      System.out.println("<<<---------------------------------------------------------------------------------------------------------->>>");
       System.out.println(String.format("%-9s|%-18s|%-12s|%-20s|%-8s|%-13s|%-18s|%-5s", "id", "Vin", "Make", "Model", "Year", "Colour", "transmission", "mileage"));
       System.out.println("----------------------------------------------------------------------------------------------------------------");
       int count = 0;

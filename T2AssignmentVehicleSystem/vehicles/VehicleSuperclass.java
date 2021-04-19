@@ -42,8 +42,16 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 	public void setColour() {
 		System.out.println("The current colour is " +this.getColour());
 		 Colours newColour = Reader.readEnum("What colour is the vehicle now?", Colours.class);
-		 while (this.getColour() == newColour) {
-			System.out.println("This colour is the same as the previous one! Try again");
+		
+		 boolean check = false;
+		 if (this.getColour() == newColour) {
+		 check = true;
+		 System.out.println("This colour is the same as the previous one! Try again");
+		check = Reader.readBoolean("Do you wish to add another colour?");
+		}
+			 
+			 while (check && (this.getColour() == newColour)) {
+			
 			newColour = Reader.readEnum("What colour is the vehicle now?", Colours.class);
 		 } 
 		 this.colour = newColour;
