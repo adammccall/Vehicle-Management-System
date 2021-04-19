@@ -58,7 +58,7 @@ public class MainClass implements Finalisable {
       MenuItem m = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
       MenuItem d = new MenuItem("D", "Display all Vehicles, and see all thier details", appObject, "display");
       MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
-      MenuItem v = new MenuItem("V", "Display a single vehicle's details", appObject, "displaySingle");
+      MenuItem v = new MenuItem("V", "Search for, and display a single vehicle's full details", appObject, "displaySingle");
       MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
       MenuBuilder.displayMenu(appObject, m, d, s, v, r); //, e, m, p, v
 
@@ -76,7 +76,7 @@ public class MainClass implements Finalisable {
       // Menu options
       MenuItem a = new MenuItem("A", "Add a new vehicle into the system", appObject, "addNew");
       MenuItem d = new MenuItem("D", "Display all Vehicles, and see all thier details", appObject, "display");
-      MenuItem v = new MenuItem("V", "Display a single vehicle's details", appObject, "displaySingle");
+      MenuItem v = new MenuItem("V", "Search for, and display a single vehicle's full details", appObject, "displaySingle");
       MenuItem s = new MenuItem("S", "Search a vehicle, and edit its details", appObject, "edit");
       MenuItem r = new MenuItem("RM", "Remove a vehicle", appObject, "remove");
       MenuBuilder.displayMenu(appObject, a, d,v, s, r); 
@@ -97,7 +97,7 @@ public class MainClass implements Finalisable {
 
     System.out.println("What type of vehicle would you like to add?" + "\nSelect a vehicle type from the list below:");
 
-    // Vehicle type menue options
+    // Vehicle type menu options
     MenuItem a = new MenuItem("E", "estate", appObject, "estate");
     MenuItem d = new MenuItem("H", "hatchback", appObject, "hatchback");
     MenuItem s = new MenuItem("M", "motorbike", appObject, "motorbike");
@@ -186,7 +186,7 @@ public class MainClass implements Finalisable {
 
     colour = Reader.readEnum("enter the colour of the vehicle", Colours.class);
 
-    vin = VehicleSuperclass.setVin(vehicleList);
+    vin = VehicleSuperclass.setVin(vehicleList, year);
 
     //Switch to assign the variables to the selected vehicle type.
     //Puts the vehicle into the vehicleList
@@ -226,7 +226,7 @@ public class MainClass implements Finalisable {
       edit(vehicleList.get(vehicleList.size() - 1));
     }
     
-    keyboard.close();
+    //keyboard.close();
   }
 
   
@@ -472,7 +472,25 @@ public class MainClass implements Finalisable {
   }
 
   public static void remove() {
+	  
+	  removeOptions answer = Reader.readEnum("What would you like to do?", MainClass.removeOptions.class);
 
+	  //this is just for Chi to quickly clear the loaded vehicles from memory.
+	  if (answer == removeOptions.DELETE_ALL) {
+		  String pw = Reader.readLine("enter the password");
+		  if (pw.equals("chi")) {
+			  boolean confirm = Reader.readBoolean("Are you sure to delete everything??");
+			  if (confirm) {
+				  vehicleList.clear();
+				  System.out.println("Vehicle list cleared. it now has " +vehicleList.size() +" object's stored.");
+				  System.out.println("Please exit the program and reload if you'd like to use the demo objects");
+			  }
+			  
+		  }else {
+			  throw new IllegalArgumentException("Wrong Password!");
+		  }
+		  
+	  }else {
     String key = Reader.readLine("Enter a search key for the vehicle you want to remove");
     VehicleSuperclass vehicle = search(key);
     if (vehicle == null) {
@@ -487,8 +505,21 @@ public class MainClass implements Finalisable {
       System.out.println("No change was made and no deletions have occured.");
     }
 
-  }
+  }}
 
+  public enum removeOptions {
+
+	  DELETE_ALL{
+		  public String toString() {
+			  return "Delete all of the vehicle records?";
+		  }
+	  },
+	  REMOVE_SINGLE {
+		  public String toString() {
+			  return "Remove a single vehicle";
+		  }}}
+  
+  
   /*
    *The below code uses the readObject method from the Utility API so that it can display
    * the header, and the returned list looks nice.
@@ -568,3 +599,4 @@ public class MainClass implements Finalisable {
 
 
 }
+

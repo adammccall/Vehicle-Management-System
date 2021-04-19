@@ -65,39 +65,76 @@ public abstract class VehicleSuperclass implements Comparable<VehicleSuperclass>
 	}
 	
 	//setVin takes the answer, and makes it all upper case.
-	public static String setVin(List<VehicleSuperclass> list) {
-		 String answer = Reader.readLine("Please enter the VIN:", 11, 14);
-	String upperAnswer = answer.toUpperCase();
-//This cycles through all other VIN's in the list to check for a match. Tries 3 times.
- 
-	for (VehicleSuperclass e : list) {
-		if (e.getVin().equals(upperAnswer)) {
-			
-			//shows what the match is.
-			System.out.println("There is a match in the System, it is a " +e.vehicleName() +"\nTry Again."); 
-			answer = Reader.readLine("Please enter the VIN:", 11, 14);
-			upperAnswer = answer.toUpperCase();
-
-			for (VehicleSuperclass f : list) { 
-				if (f.getVin().equals(upperAnswer)) { 
-					System.out.println("There is a match in the System, it is a " +f.vehicleName());
-					answer = Reader.readLine("Please enter the VIN:", 11, 14);
+	public static String setVin(List<VehicleSuperclass> list, int year) {
+		
+		if (year < 1985) {
+			String answer = Reader.readLine("Please enter the VIN, because this is pre-1984, this can between 11-17 charecters", 11, 17);
+			String upperAnswer = answer.toUpperCase();
+		//This cycles through all other VIN's in the list to check for a match. Tries 3 times.
+		 
+			for (VehicleSuperclass e : list) {
+				if (e.getVin().equals(upperAnswer)) {
+					
+					//shows what the match is.
+					System.out.println("There is a match in the System, it is a " +e.vehicleName() +"\nTry Again."); 
+					answer = Reader.readLine("Please enter the VIN:", 11, 17);
 					upperAnswer = answer.toUpperCase();
-				} 
+
+					for (VehicleSuperclass f : list) { 
+						if (f.getVin().equals(upperAnswer)) { 
+							System.out.println("There is a match in the System, it is a " +f.vehicleName());
+							answer = Reader.readLine("Please enter the VIN:", 11, 17);
+							upperAnswer = answer.toUpperCase();
+						} 
+					}
+					for (VehicleSuperclass g : list) { 
+						if (g.getVin().equals(upperAnswer)) { 
+							System.out.println("There is a match in the System, it is a " +g.vehicleName()
+							+"\nToo many attempts."); 
+							throw new IllegalArgumentException("Too many attempts of the VIN but still a match!");
+						} 
+					}
+
+				}
+
+
 			}
-			for (VehicleSuperclass g : list) { 
-				if (g.getVin().equals(upperAnswer)) { 
-					System.out.println("There is a match in the System, it is a " +g.vehicleName()
-					+"\nToo many attempts."); 
-					throw new IllegalArgumentException("Too many attempts of the VIN but still a match!");
-				} 
+				 return upperAnswer;
+			
+		}else {
+		String answer = Reader.readLine("Please enter the VIN because this is post-1984, this needs to be 17 charecters:", 17);
+		String upperAnswer = answer.toUpperCase();
+	//This cycles through all other VIN's in the list to check for a match. Tries 3 times.
+	 
+		for (VehicleSuperclass e : list) {
+			if (e.getVin().equals(upperAnswer)) {
+				
+				//shows what the match is.
+				System.out.println("There is a match in the System, it is a " +e.vehicleName() +"\nTry Again."); 
+				answer = Reader.readLine("Please enter the VIN:",17);
+				upperAnswer = answer.toUpperCase();
+
+				for (VehicleSuperclass f : list) { 
+					if (f.getVin().equals(upperAnswer)) { 
+						System.out.println("There is a match in the System, it is a " +f.vehicleName());
+						answer = Reader.readLine("Please enter the VIN:", 17);
+						upperAnswer = answer.toUpperCase();
+					} 
+				}
+				for (VehicleSuperclass g : list) { 
+					if (g.getVin().equals(upperAnswer)) { 
+						System.out.println("There is a match in the System, it is a " +g.vehicleName()
+						+"\nToo many attempts."); 
+						throw new IllegalArgumentException("Too many attempts of the VIN but still a match!");
+					} 
+				}
+
 			}
+
 
 		}
-
-
-	}
-		 return upperAnswer;
+			 return upperAnswer;
+		}
 		  
 	  }
 
